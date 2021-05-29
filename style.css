@@ -1,0 +1,12 @@
+Body {
+    Background-Image : url("Paint Background Image.jpeg") ;
+    Background-Size : Cover ;
+}
+#The-Canvas {
+    Height : 400 ;
+    width: 800 ;
+    Background-Color : #ffffff ;
+    Border-Color : 5 ;
+    Border-Style : Solid ;
+    Border-Radius : 25PX;
+}
