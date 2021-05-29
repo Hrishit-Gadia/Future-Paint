@@ -1,28 +1,45 @@
 var Canvas = document.getElementById("The-Canvas");
-var ctx = Canvas.getContext("2d");
+var Ctx = Canvas.getContext("2d");
+var Mouse_Event;
+var Colour;
+var Width;
+var Radius;
+var CurrentX;
+var CurrentY;
 
-ctx.beginPath();
-ctx.strokeStyle = "Blue";
-ctx.lineWidth = 3;
-ctx.arc(60, 50, 40, 0, 2 * Math.PI);
-ctx.stroke();
 
-ctx.beginPath();
-ctx.strokeStyle = "Black";
-ctx.arc(150, 50, 40, 0, 2 * Math.PI);
-ctx.stroke();
+Canvas.addEventListener("mousedown", Down);
 
-ctx.beginPath();
-ctx.strokeStyle = "Red";
-ctx.arc(240, 50, 40, 0, 2 * Math.PI);
-ctx.stroke();
+function Down(e) {
+    Colour = document.getElementById("Colour-Input").value;
+    Width = document.getElementById("Width-Input").value;
+    Radius = document.getElementById("Radius-Input").value;
+    Mouse_Event = "Down";
+}
 
-ctx.beginPath();
-ctx.strokeStyle = "yellow";
-ctx.arc(100, 100, 40, 0, 2 * Math.PI);
-ctx.stroke();
+Canvas.addEventListener("mouseup", Up);
 
-ctx.beginPath();
-ctx.strokeStyle = "Green";
-ctx.arc(200, 100, 40, 0, 2 * Math.PI);
-ctx.stroke();
+function Up(e) {
+    Mouse_Event = "Up";
+}
+Canvas.addEventListener("mousemove", Move);
+
+function Move(e) {
+
+    CurrentX = e.clientX - Canvas.offsetLeft;
+    CurrentY = e.clientY - Canvas.offsetTop;
+    if (Mouse_Event == "Down") {
+        console.log("X = " + CurrentX + " Y = " + CurrentY);
+        Ctx.beginPath();
+        Ctx.strokeStyle = Colour;
+        Ctx.lineWidth = Width;
+        Ctx.arc(CurrentX, CurrentY, Radius, 0, 2 * Math.PI);
+        Ctx.stroke();
+    }
+}
+
+Canvas.addEventListener("mouseleave", Leave);
+
+function Leave(e) {
+    Mouse_Event = "Leave";
+}

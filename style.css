@@ -10,3 +10,23 @@ Body {
     Border-Style : Solid ;
     Border-Radius : 25PX;
 }
+Input {
+    color: #ffffff;
+    border-width: 2px;
+    border-radius: 50px;
+    Border-color : black;
+    width : 100px;
+    margin-top : 35px;
+    Background-color: black;
+}
+::placeholder {
+    color: white;
+    opacity: 1;
+    font-family: cursive;
+  }
+#Inputs {
+    Height : 100px;
+    Width : 400px;
+   background-image: url("Black Stroke.png"); 
+   background-size: cover;
+}
