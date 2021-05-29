@@ -3,6 +3,7 @@ var ctx = Canvas.getContext("2d");
 
 ctx.beginPath();
 ctx.strokeStyle = "Blue";
+ctx.lineWidth = 3;
 ctx.arc(60, 50, 40, 0, 2 * Math.PI);
 ctx.stroke();
 
