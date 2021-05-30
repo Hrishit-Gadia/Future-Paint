@@ -1,45 +1,77 @@
-var Canvas = document.getElementById("The-Canvas");
-var Ctx = Canvas.getContext("2d");
-var Mouse_Event;
-var Colour;
-var Width;
-var Radius;
+var PreviousX;
+var PreviousY;
 var CurrentX;
 var CurrentY;
+var Canvas = document.getElementById("The-Canvas");
+var Ctx = Canvas.getContext("2d");
+var CurrentEvent;
+var Colour;
+var Width;
 
+Canvas.addEventListener("mousedown", MouseDown);
 
-Canvas.addEventListener("mousedown", Down);
+function MouseDown(e) {
 
-function Down(e) {
-    Colour = document.getElementById("Colour-Input").value;
-    Width = document.getElementById("Width-Input").value;
-    Radius = document.getElementById("Radius-Input").value;
-    Mouse_Event = "Down";
+    CurrentEvent = "Mouse Down";
+    Colour = document.getElementById("Colour").value;
+    Width = document.getElementById("Width").value;
+    console.log("Width = " + Width + " , " + " Colour = " + Colour);
 }
 
-Canvas.addEventListener("mouseup", Up);
+Canvas.addEventListener("mousemove", MouseMove);
 
-function Up(e) {
-    Mouse_Event = "Up";
-}
-Canvas.addEventListener("mousemove", Move);
-
-function Move(e) {
+function MouseMove(e) {
 
     CurrentX = e.clientX - Canvas.offsetLeft;
     CurrentY = e.clientY - Canvas.offsetTop;
-    if (Mouse_Event == "Down") {
-        console.log("X = " + CurrentX + " Y = " + CurrentY);
+
+    if (CurrentEvent == "Mouse Down") {
         Ctx.beginPath();
-        Ctx.strokeStyle = Colour;
         Ctx.lineWidth = Width;
-        Ctx.arc(CurrentX, CurrentY, Radius, 0, 2 * Math.PI);
+        Ctx.strokeStyle = Colour;
+        Ctx.moveTo(PreviousX, PreviousY);
+        Ctx.lineTo(CurrentX, CurrentY);
         Ctx.stroke();
     }
+PreviousX = CurrentX;
+PreviousY = CurrentY;
 }
 
-Canvas.addEventListener("mouseleave", Leave);
+Canvas.addEventListener("mouseup" , MouseUp);
 
-function Leave(e) {
-    Mouse_Event = "Leave";
+function MouseUp (e) {
+    CurrentEvent =  "Mouse Up";
+}
+
+Canvas.addEventListener("mouseleave" , MouseLeave);
+
+function MouseLeave (e) {
+    CurrentEvent = "Mouse Leave";
+}
+
+Canvas.addEventListener("touchdown", TouchDown);
+
+function TouchDown(e) {
+
+    CurrentEvent = "Touch Down";
+    Colour = document.getElementById("Colour").value;
+    Width = document.getElementById("Width").value;
+    console.log("Width = " + Width + " , " + " Colour = " + Colour);
+}
+
+Canvas.addEventListener("touchmove", TouchMove);
+
+function TouchMove(e) {
+
+    CurrentX = e.touches[0].clientX - Canvas.offsetLeft;
+    CurrentY = e.touches[0].clientY - Canvas.offsetTop;
+
+    if (CurrentEvent == "Mouse Down") {
+        Ctx.beginPath();
+        Ctx.moveTo(PreviousX, PreviousY);
+        Ctx.lineTo(CurrentX, CurrentY);
+        Ctx.stroke();
+    }
+PreviousX = CurrentX;
+PreviousY = CurrentY;
 }
