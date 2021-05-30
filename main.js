@@ -49,7 +49,7 @@ function MouseLeave (e) {
     CurrentEvent = "Mouse Leave";
 }
 
-Canvas.addEventListener("touchdown", TouchStart);
+Canvas.addEventListener("touchstart", TouchStart);
 
 function TouchStart(e) {
 
