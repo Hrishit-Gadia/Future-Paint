@@ -49,9 +49,9 @@ function MouseLeave (e) {
     CurrentEvent = "Mouse Leave";
 }
 
-Canvas.addEventListener("touchdown", TouchDown);
+Canvas.addEventListener("touchdown", TouchStart);
 
-function TouchDown(e) {
+function TouchStart(e) {
 
     CurrentEvent = "Touch Down";
     Colour = document.getElementById("Colour").value;
@@ -66,7 +66,7 @@ function TouchMove(e) {
     CurrentX = e.touches[0].clientX - Canvas.offsetLeft;
     CurrentY = e.touches[0].clientY - Canvas.offsetTop;
 
-    if (CurrentEvent == "Mouse Down") {
+    if (CurrentEvent == "Touch Down") {
         Ctx.beginPath();
         Ctx.moveTo(PreviousX, PreviousY);
         Ctx.lineTo(CurrentX, CurrentY);
