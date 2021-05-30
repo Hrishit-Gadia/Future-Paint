@@ -5,14 +5,14 @@ Body {
 
 Label {
     Font-Family: 'Cedarville Cursive', cursive;
-    Font-Size: 37px;
+    Font-Size: 30px;
     Color: #FFFFFF;
 }
 
 .Text {
     Background-Image: Url("Black Stroke.png");
     Background-Size: Cover;
-    Height: 150px;
+    Height: 137.5px;
     Width: 600px;
 }
 
