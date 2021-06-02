@@ -12,13 +12,11 @@ Label {
 .Text {
     Background-Image: Url("Black Stroke.png");
     Background-Size: Cover;
-    Height: 137.5px;
+    Height: 100px;
     Width: 600px;
 }
 
 #The-Canvas {
-    Height: 400px;
-    Width: 800px;
     Border-Color: Black;
     Border-Style: Solid;
     Border-Radius: 50px;
@@ -26,7 +24,7 @@ Label {
 }
 
 Input {
-    Margin-Top: 50px;
+    margin-top: 25;
     Background-Color: Black;
     Color: #FFFFFF;
 }

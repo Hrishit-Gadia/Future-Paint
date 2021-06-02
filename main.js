@@ -57,6 +57,9 @@ function TouchStart(e) {
     Colour = document.getElementById("Colour").value;
     Width = document.getElementById("Width").value;
     console.log("Width = " + Width + " , " + " Colour = " + Colour);
+    PreviousX = e.touches[0].clientX - Canvas.offsetLeft;
+    PreviousY = e.touches[0].clientY - Canvas.offsetTop;
+
 }
 
 Canvas.addEventListener("touchmove", TouchMove);
@@ -68,6 +71,8 @@ function TouchMove(e) {
 
     if (CurrentEvent == "Touch Down") {
         Ctx.beginPath();
+        Ctx.strokeStyle = Colour;
+        Ctx.lineWidth = Width;
         Ctx.moveTo(PreviousX, PreviousY);
         Ctx.lineTo(CurrentX, CurrentY);
         Ctx.stroke();
